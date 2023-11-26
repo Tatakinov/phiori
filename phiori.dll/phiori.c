@@ -31,11 +31,11 @@ BOOL LOAD(HGLOBAL h, long len) {
     if (!phioriRoot)
         return FALSE;
     memcpy(phioriRoot, h, len);
-    size_t root_sz = MultiByteToWideChar(CP_UTF8, 0, phioriRoot, -1, NULL, 0);
+    size_t root_sz = MultiByteToWideChar(CP_ACP, 0, phioriRoot, -1, NULL, 0);
     phioriRootW = calloc(root_sz, sizeof(wchar_t));
     if (!phioriRootW)
         return FALSE;
-    MultiByteToWideChar(CP_UTF8, 0, phioriRoot, -1, phioriRootW, root_sz);
+    MultiByteToWideChar(CP_ACP, 0, phioriRoot, -1, phioriRootW, root_sz);
     phioriNameW = calloc(root_sz, sizeof(wchar_t));
     if (!phioriNameW)
         return FALSE;
