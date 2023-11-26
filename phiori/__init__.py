@@ -1,5 +1,5 @@
 import sys, os, traceback
-import datetime, json, random, re, time, urllib.request, urllib.parse, yaml
+import datetime, json, random, re, time, urllib.request, urllib.parse
 from .shiori import *
 from .phiori import *
 from .collections import LiveDict, LiveJsonDict, LiveBsonDict, LivePersonaDict, PropertyDict
@@ -49,7 +49,6 @@ def load(path):
 		"sys": sys,
 		"time": time,
 		"urllib": urllib,
-		"yaml": yaml,
 		#phiori functions
 		"handle": phiori.handle,
 		"print": phiori.print,
