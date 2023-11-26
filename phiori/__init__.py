@@ -94,8 +94,8 @@ def unload():
 	calling this method in manually is not recommended.
 	"""
 	global persona
-	del parsonae[persona]
-	parsonae["temp"] = Phiori()
+	del personae[persona]
+	personae["temp"] = Phiori()
 	persona = None
 	return True
 
