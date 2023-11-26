@@ -1,5 +1,5 @@
 import sys, os
-import json, bson
+import json
 
 class LiveDict(dict):
 	"""
@@ -54,39 +54,6 @@ class LiveJsonDict(dict):
 				result = func(self, *args, **kwargs)
 				with open(self.filename, "w", encoding="utf-8") as f:
 					json.dump(self, f, ensure_ascii=False, sort_keys=True, indent=4)
-				return result
-			except:
-				pass
-		return wrap
-	
-	__setitem__ = _live(dict.__setitem__)
-	__delitem__ = _live(dict.__delitem__)
-	clear = _live(dict.clear)
-	pop = _live(dict.pop)
-	popitem = _live(dict.popitem)
-	setdefault = _live(dict.setdefault)
-	update = _live(dict.update)
-
-class LiveBsonDict(dict):
-	"""
-	a dictionary that to export as bson file in real-time.
-	"""
-	
-	def __init__(self, file, *args, **kwargs):
-		self.filename = file
-		if os.path.exists(file):
-			with open(self.filename, "rb") as f:
-				self.update(bson.parse_stream(f))
-		else:
-			self.clear()
-			self.update(*args, **kwargs)
-	
-	def _live(func):
-		def wrap(self, *args, **kwargs):
-			try:
-				result = func(self, *args, **kwargs)
-				with open(self.filename, "wb") as f:
-					bson.serialize_to_stream(self, f)
 				return result
 			except:
 				pass

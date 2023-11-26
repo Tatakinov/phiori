@@ -2,7 +2,7 @@ import sys, os, traceback
 import datetime, json, random, re, time, urllib.request, urllib.parse
 from .shiori import *
 from .phiori import *
-from .collections import LiveDict, LiveJsonDict, LiveBsonDict, LivePersonaDict, PropertyDict
+from .collections import LiveDict, LiveJsonDict, LivePersonaDict, PropertyDict
 
 # on ssp, all phiori use the shared memory,
 # so need to separate the namespace per ghost.
@@ -24,7 +24,7 @@ def load(path):
 	phiori.path = path
 	phiori.configs = LivePersonaDict(os.path.join(path, "config.txt"))
 	phiori.resources = LivePersonaDict(os.path.join(path, "resource.txt"))
-	phiori.variables = LiveBsonDict(os.path.join(path, "variable.dat"))
+	phiori.variables = LiveJsonDict(os.path.join(path, "variable.dat"))
 	phiori.words = LiveJsonDict(os.path.join(path, "words.dic"))
 	phiori.encoding = phiori.configs.get("encoding", "utf-8")
 	phiori.objects = {
