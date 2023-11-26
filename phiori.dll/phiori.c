@@ -165,7 +165,7 @@ BOOL checkPython(void) {
         return FALSE;
     wcscpy(pathW, phioriRootW);
     wcscat(pathW, PYTHON_DLL_NAME_W);
-    HMODULE dll = LoadLibrary(pathW);
+    HMODULE dll = LoadLibraryW(pathW);
     free(pathW);
     if (!dll)
         return FALSE;
