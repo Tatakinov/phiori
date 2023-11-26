@@ -138,7 +138,6 @@ HGLOBAL REQUEST(HGLOBAL h, long *len) {
         if (callResult != NULL)
             result = PyBytes_AsString(callResult);
         Py_XDECREF(callResult);
-        Py_XDECREF(arg1);
         Py_XDECREF(arg0);
     }
     return result;
