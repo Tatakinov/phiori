@@ -32,11 +32,11 @@ BOOL LOAD(HGLOBAL h, long len) {
         return FALSE;
     memcpy(phioriRoot, h, len);
     size_t root_sz = MultiByteToWideChar(CP_ACP, 0, phioriRoot, -1, NULL, 0);
-    phioriRootW = calloc(root_sz, sizeof(wchar_t));
+    phioriRootW = calloc(root_sz + 1, sizeof(wchar_t));
     if (!phioriRootW)
         return FALSE;
     MultiByteToWideChar(CP_ACP, 0, phioriRoot, -1, phioriRootW, root_sz);
-    phioriNameW = calloc(root_sz, sizeof(wchar_t));
+    phioriNameW = calloc(root_sz + 1, sizeof(wchar_t));
     if (!phioriNameW)
         return FALSE;
     wcscpy(phioriNameW, phioriRootW);
@@ -162,7 +162,7 @@ int getPhioriVersion(char *buf) {
 }
 
 BOOL checkPython(void) {
-    wchar_t *pathW = calloc(wcslen(phioriRootW) + wcslen(PYTHON_DLL_NAME_W), sizeof(wchar_t));
+    wchar_t *pathW = calloc(wcslen(phioriRootW) + wcslen(PYTHON_DLL_NAME_W) + 1, sizeof(wchar_t));
     if (!pathW)
         return FALSE;
     wcscpy(pathW, phioriRootW);
@@ -172,7 +172,7 @@ BOOL checkPython(void) {
     if (!dll)
         return FALSE;
     FreeLibrary(dll);
-    char *path = calloc(strlen(phioriRoot) + strlen(PYTHON_LIB_NAME), sizeof(char));
+    char *path = calloc(strlen(phioriRoot) + strlen(PYTHON_LIB_NAME) + 1, sizeof(char));
     if (!path)
         return FALSE;
     strcpy(path, phioriRoot);
