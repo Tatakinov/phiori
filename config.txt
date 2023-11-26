@@ -1,0 +1,2 @@
+talk.interval,60
+shellstate.patience,15

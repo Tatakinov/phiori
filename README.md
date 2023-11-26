@@ -10,16 +10,55 @@ phiori.dllは同dllがあるフォルダの\*.pyを読み込むようになっ�
 
 ```
 ghost/master
+    |- config.txt
+    |- descript.txt
+    |- dlls
+        |- LICENSE.txt
+        |- _asyncio.pyd
+        |- _bz2.pyd
+        |- ...
+    |- example.py
+    |- phiori
+        |- __init__.py
+        |- builtins
+        |- collections.py
+        |- ...
     |- phiori.dll
     |- python312.dll
     |- python312.zip
-    |- phiori
-    |- example.py
+    |- resource.txt
+    |- words.dic
 ```
 
 のようになると思われます。
 
+[Python Release for Windows](https://www.python.org/downloads/windows/)
+の最新版のWindows embeddable package (32-bit)
+を解凍してpython312.dllとpython312.zipをghost/master以下に配置して
+残りをdllsにリネームすると良いと思います。
+
+# ビルド
+
+[Python Release for Windows](https://www.python.org/downloads/windows/)
+からWindows installer (32-bit)をダウンロードしてインストールする。
+
+pythonのinclude, libsそれぞれにパスを通して
+
+```
+cd phiori.dll
+clang -o phiori.dll -shared *.c -lpython312
+```
+
+もしくはパスを通さずに直接
+
+```
+cd phiori.dll
+clang -I path/to/python/include -L path/to/python/libs -o phiori.dll -shared *.c -lpython312
+```
+
+とする。
+
 # ライセンス
 
-phiori.dllはLGPL3、phioriモジュールはMIT Licenseです。
+phiori.dllはLGPL3、example.pyおよびphioriモジュールはMIT Licenseです。
 
