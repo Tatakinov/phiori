@@ -140,6 +140,7 @@ HGLOBAL REQUEST(HGLOBAL h, long *len) {
         Py_XDECREF(callResult);
         Py_XDECREF(arg0);
     }
+    free(req);
     return result;
 }
 
