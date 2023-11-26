@@ -4,6 +4,12 @@
 #include <stdlib.h>
 #include <Windows.h>
 
+int IS_LOADED;
+int IS_ERROR;
+char *ERROR_MESSAGE;
+char *ERROR_TRACEBACK;
+int SHOW_ERROR;
+
 BOOL load(HGLOBAL h, long len) {
     int result = 0;
     result |= LOAD_Emergency(h, len);
