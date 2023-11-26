@@ -1,7 +1,7 @@
 import sys, os, traceback
 import random, locale, time
 from types import GeneratorType
-from collections import Iterable
+from collections.abc import Iterable
 from .shiori import Shiori
 
 class Phiori:
