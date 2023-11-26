@@ -11,7 +11,7 @@ personae = {}
 # activated ghost
 persona = None
 
-def load(path, _len):
+def load(path):
 	"""
 	when phiori is loaded for the first time, it will be called from the baseware.
 	
@@ -100,7 +100,7 @@ def unload():
 	persona = None
 	return True
 
-def request(req, _len):
+def request(req):
 	"""
 	when baseware sent request, it will be called.
 	

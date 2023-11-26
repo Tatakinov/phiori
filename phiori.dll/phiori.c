@@ -134,8 +134,7 @@ HGLOBAL REQUEST(HGLOBAL h, long *len) {
     }
     else {
         PyObject *arg0 = PyBytes_FromStringAndSize(req, *len);
-        PyObject *arg1 = PyLong_FromLong(*len);
-        PyObject *callResult = PyObject_CallFunctionObjArgs(func, arg0, arg1, NULL);
+        PyObject *callResult = PyObject_CallFunctionObjArgs(func, arg0, NULL);
         if (callResult != NULL)
             result = PyBytes_AsString(callResult);
         Py_XDECREF(callResult);
