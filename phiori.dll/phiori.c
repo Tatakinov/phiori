@@ -6,8 +6,8 @@
 #include <Windows.h>
 #include <Python.h>
 
-const wchar_t *PYTHON_DLL_NAME_W = L"python35.dll";
-const char *PYTHON_LIB_NAME = "python35.zip";
+const wchar_t *PYTHON_DLL_NAME_W = L"python312.dll";
+const char *PYTHON_LIB_NAME = "python312.zip";
 
 BOOL checkPython(void);
 void getTraceback(void);
