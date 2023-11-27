@@ -337,6 +337,7 @@ void *REQUEST_Emergency(void *h, long *len) {
     free(res.kvarr);
     // return handle.
     *len = resraw_len - 1;
+    free(raw);
     return resraw;
 }
 
