@@ -3,6 +3,12 @@
 [phiori](https://github.com/phiori/phiori)
 を令和の世に復活させる試み。
 
+# Caution
+
+**fork元とはセーブデータの互換性がありません。**
+
+fork元のphioriを更新する目的で導入するのは非推奨です。
+
 # 使い方
 
 phiori.dllは同dllがあるフォルダの\*.pyを読み込むようになっています。
